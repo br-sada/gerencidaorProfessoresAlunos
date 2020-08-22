@@ -1,13 +1,18 @@
 const fs = require('fs')
-const date = require('./data.json')
+const date = require('../data.json')
 const { parse } = require('path')
-const { age, graduation, birth } = require('./utils')
+const { age, graduation, birth } = require('../utils')
 
 exports.index = function (req, res) {
     return res.render('teachers/index', { teachers: date.teachers })
 }
 
 //create
+exports.create = function(req, res) {
+    return res.render('teachers/create')
+}
+
+//post
 exports.post = function (req, res) {
 
     const keys = Object.keys(req.body)

@@ -3,20 +3,20 @@
 {% block content %}
     <div class="cards">
         
-        <section class="avatar" style="background: url({{ teacher.avatar_url }}500x500) no-repeat center center / cover"></section>
+        <section class="avatar" style="background: url({{ student.avatar_url }}500x500) no-repeat center center / cover"></section>
 
         <section class="details">
-            <form method="POST" action="/teachers?_method=PUT">
+            <form method="POST" action="/students?_method=PUT">
 
                 <h3>Editar Professor</h3>
 
-                {% include "teachers/fields.njk" %}
+                {% include "students/fields.njk" %}
 
-                <input type="hidden" name="id" value="{{ teacher.id }}">
+                <input type="hidden" name="id" value="{{ student.id }}">
             </form>
 
-            <form id="form-delete" action="/teachers?_method=DELETE" method="post">
-                <input type="hidden" name="id" value="{{ teacher.id }}">
+            <form id="form-delete" action="/students?_method=DELETE" method="post">
+                <input type="hidden" name="id" value="{{ student.id }}">
                 <button type="submit">Deletar</button>
             </form>
         </section>

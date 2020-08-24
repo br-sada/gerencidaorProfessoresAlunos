@@ -22,21 +22,22 @@ exports.post = function (req, res) {
         }
     }
 
-    let { avatar_url, name, birth, education_level, class_type, services } = req.body
+    let id = 1
 
-    birth = Date.parse(birth)
+    let birth = Date.parse(req.body.birth)
     const create_at = Date.now()
-    const id = Number(date.teachers.length + 1)
+
+    const lastTeacher = date.teachers[date.teachers.length -1]
+
+    if(lastTeacher) {
+        id = Number(lastTeacher.id + 1)
+    }
 
 
     date.teachers.push({
         id,
-        avatar_url,
-        name,
+        ...req.body,
         birth,
-        education_level,
-        class_type,
-        services,
         create_at
     })
 

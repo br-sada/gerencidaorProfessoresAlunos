@@ -1,21 +1,28 @@
 <div class="item">
     <div>Avatar URL</div>
     <div>
-        <input type="url" name="avatar_url" placeholder="http://" value="{{ teacher.avatar_url }}">
+        <input type="url" name="avatar_url" placeholder="http://" value="{{ student.avatar_url }}">
     </div>
 </div>
 
 <div class="item">
     <div>Nome Completo</div>
     <div>
-        <input type="text" name="name" value="{{ teacher.name }}">
+        <input type="text" name="name" value="{{ student.name }}">
+    </div>
+</div>
+
+<div class="item">
+    <div>E-mail</div>
+    <div>
+        <input type="email" name="email" value="{{ student.name }}">
     </div>
 </div>
 
 <div class="item">
     <div>Data de Nascimento</div>
     <div>
-        <input type="date" name="birth" value="{{ teacher.birth }}">
+        <input type="date" name="birth" value="{{ student.birth }}">
     </div>
 </div>
 
@@ -25,7 +32,7 @@
         <select name="education_level">
             <option 
                 value="Medio" 
-                {% if teacher.education_level == "Medio" %}
+                {% if student.education_level == "Medio" %}
                     selected
                 {% endif %}
                 >Ensino Médio Completo
@@ -33,7 +40,7 @@
 
             <option
                 value="Superior"
-                {% if teacher.education_level == "Superior" %}
+                {% if student.education_level == "Superior" %}
                     selected
                 {% endif %}
                 >Ensino Superior Completo
@@ -41,7 +48,7 @@
 
             <option 
                 value="Mestrado"
-                {% if teacher.education_level == "Mestrado" %}
+                {% if student.education_level == "Mestrado" %}
                     selected
                 {% endif %}
                 >Mestrado
@@ -49,7 +56,7 @@
 
             <option
                 value="Doutorado"
-                {% if teacher.education_level == "Doutorado" %}
+                {% if student.education_level == "Doutorado" %}
                     selected
                 {% endif %}
                 >Doutorado
@@ -66,7 +73,7 @@
                 type="radio" 
                 name="class_type" 
                 value="P" 
-                {% if teacher.class_type == "P" %}
+                {% if student.class_type == "P" %}
                     checked
                 {% endif %}
                 >Presencial
@@ -77,18 +84,11 @@
                 type="radio" 
                 name="class_type" 
                 value="D"
-                {% if teacher.class_type == "D" %}
+                {% if student.class_type == "D" %}
                     checked
                 {% endif %}
                 >À distancia
         </span>
-    </div>
-</div>
-
-<div class="item">
-    <div>Área de atuação</div>
-    <div>
-        <input type="text" name="services" placeholder="Escrever área de atuação separarado por virgula." value="{{ teacher.services }}">
     </div>
 </div>
 

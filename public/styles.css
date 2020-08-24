@@ -229,7 +229,8 @@ tbody tr td:first-child span {
     border: 2px solid white
 }
 
-tbody tr td:last-child a {
+/*====== botão ação ======*/
+tbody tr td:last-child a, .table-container > a {
     background-color: var(--color-rocket);
     padding: 8px 16px;
     text-transform: uppercase;
@@ -237,6 +238,11 @@ tbody tr td:last-child a {
     color: white;
     text-decoration: none;
     border-radius: 4px;
+}
+
+.table-container > a {
+    margin-bottom: 24px;
+    display: inline-block;
 }
 
 .table-container thead tr th:last-child, td:last-child {

@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="cards">
-        
+
         <section class="avatar" style="background: url({{ student.avatar_url }}500x500) no-repeat center center / cover"></section>
 
         <section class="details">
@@ -19,6 +19,9 @@
                 <input type="hidden" name="id" value="{{ student.id }}">
                 <button type="submit">Deletar</button>
             </form>
+
+            {% include "students/deleteConfirm.njk" %}
+
         </section>
 
     </div>

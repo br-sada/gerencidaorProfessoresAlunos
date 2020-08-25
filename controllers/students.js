@@ -64,6 +64,7 @@ exports.show = function (req, res) {
     const student = {
         ...foundStudents,
         age: age(foundStudents.birth),
+        birth: birth(foundStudents.birth).birthDay,
         education_level: graduation(foundStudents.education_level),
         create_at: new Intl.DateTimeFormat("pt-BR").format(foundStudents.create_at)
     }
@@ -84,7 +85,7 @@ exports.edit = function (req, res) {
 
     const student = {
         ...founsdStudents,
-        birth: birth(founsdStudents.birth)
+        birth: birth(founsdStudents.birth).iso
     }
 
     return res.render('students/edit', { student: student })

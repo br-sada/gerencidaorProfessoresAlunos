@@ -3,11 +3,12 @@
     {
       "id": 1,
       "avatar_url": "https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&q=80",
-      "name": "Vanessa Silva",
+      "name": "Vanessa",
       "birth": 845424000000,
       "education_level": "Medio",
       "class_type": "D",
-      "create_at": 1598241214302
+      "create_at": 1598241214302,
+      "email": "teste1@hotmail.com"
     },
     {
       "id": 2,

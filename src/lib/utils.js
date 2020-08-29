@@ -38,7 +38,8 @@ module.exports = {
             mounth,
             year,
             iso: `${year}-${mounth}-${day}`,
-            birthDay: `${day}/${mounth}`
+            birthDay: `${day}/${mounth}`,
+            format: `${day}/${mounth}/${year}`
         }
     }
 }

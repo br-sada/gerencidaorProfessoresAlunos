@@ -66,6 +66,23 @@
 </div>
 
 <div class="item">
+    <div>Professor</div>
+    <div>
+        <select name="teacher">
+            {% for teacher in teacherOption %}
+                <option 
+                    value="{{ teacher.id }}" 
+                    {% if student.teacher_id == teacher.id %}
+                        selected
+                    {% endif %}
+                    >{{ teacher.name }}
+                </option>
+            {% endfor %}
+        </select>
+    </div>
+</div>
+
+<div class="item">
     <div>Tipo de aula</div>
     <div>
         <span>

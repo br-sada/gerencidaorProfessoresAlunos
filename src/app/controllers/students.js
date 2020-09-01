@@ -10,7 +10,10 @@ exports.index = function (req, res) {
 
 //create
 exports.create = function(req, res) {
-    return res.render('students/create')
+
+    Student.teacherSelectOption(function(option) {
+        return res.render('students/create', { teacherOption: option })
+    }) 
 }
 
 //post
@@ -49,7 +52,11 @@ exports.edit = function (req, res) {
     Student.find(req.params.id, function(student) {
         if(!student) return res.send("Student Not Found")
 
-        return res.render('students/edit', { student })
+        student.birth = birth(student.birth).iso
+
+        Student.teacherSelectOption(function(option) {
+            return res.render('students/edit', { student, teacherOption: option })
+        }) 
     })
 }
 

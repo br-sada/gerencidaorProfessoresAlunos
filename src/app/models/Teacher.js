@@ -58,6 +58,21 @@ module.exports = {
             }
         )
     },
+    //Buscar com filtro
+    findby(filter, callback) {
+        db.query(`
+        SELECT teachers.*, count(students) as total_students
+        FROM teachers 
+        LEFT JOIN students on (students.teacher_id = teachers.id)
+        WHERE teachers.name ILIKE '%${ filter }%'
+        OR teachers.services ILIKE '%${ filter }%'
+        group by teachers.id`, function(err, results) {
+            
+            if(err) throw `DataBase Error! ${err}`
+
+            callback(results.rows)
+        })
+    },
     //Editar Cadastro no DB
     update(data, callback) {
         const query = `

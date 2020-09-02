@@ -3,10 +3,17 @@ const { age, graduation, birth } = require('../../lib/utils')
 const Teacher = require('../models/Teacher')
 
 exports.index = function (req, res) {
-    Teacher.all(function(teachers) {
-        return res.render('teachers/index', { teachers })
-    })
-    
+    const { filter } = req.query
+
+    if(!filter) {
+        Teacher.all(function(teachers) {
+            return res.render('teachers/index', { teachers })
+        })
+    } else {
+        Teacher.findby(filter, function(teachers) {
+            return res.render('teachers/index', { teachers })
+        })
+    }
 }
 
 //create

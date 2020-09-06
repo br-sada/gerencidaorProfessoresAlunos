@@ -3,9 +3,17 @@ const { age, graduation, birth } = require('../../lib/utils')
 const Student = require('../models/Student')
 
 exports.index = function (req, res) {
-    Student.all(function(students) {
-        return res.render('students/index', { students })
-    })  
+    const { filter } = req.query
+
+    if(!filter){
+        Student.all(function(students) {
+            return res.render('students/index', { students })
+        })
+    } else {
+        Student.findby(filter, function(students) {
+            return res.render('students/index', { students })
+        })
+    }
 }
 
 //create

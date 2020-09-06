@@ -55,6 +55,20 @@ module.exports = {
             callback(results.rows[0])
         })
     },
+    //Busca com filtro
+    findby(filter, callback) {
+        db.query(`
+        SELECT *
+        FROM students 
+        WHERE students.name ILIKE '%${ filter }%'
+        OR students.email ILIKE '%${ filter }%'
+        `, function(err, results) {
+            
+            if(err) throw `DataBase Error! ${err}`
+
+            callback(results.rows)
+        })
+    },
     //Atualizar Cadastro Estudantes
     update(data, callback) {
         const query = `

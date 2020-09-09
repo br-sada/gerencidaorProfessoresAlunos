@@ -7,11 +7,6 @@ for (item of menuItems) {
     }
 }
 
-//Paginação
-//totalPages = 20
-//selectedPage = 15
-//[ 1, ..., 13, 14, 15, 16, 17, ..., 20 ]
-
 function paginate(selectedPage, totalPages) {
     let pages = [],
         oldPage
@@ -41,25 +36,31 @@ function paginate(selectedPage, totalPages) {
     return pages
 }
 
-const pagination = document.querySelector(".pagination")
-const number = document.querySelector(".pagination .number")
-const page = +pagination.dataset.page;
-const total = +pagination.dataset.total;
-const filter = pagination.dataset.filter;
-const pages = paginate(page, total);
+function createPagination(pagination, number) {
+    const page = +pagination.dataset.page;
+    const total = +pagination.dataset.total;
+    const filter = pagination.dataset.filter;
+    const pages = paginate(page, total);
 
-let elements = ""
+    let elements = ""
 
-for (let page of pages) {
-    if(String(pages).includes("...")) {
-        elements += `<span>${page}</span>`
-    } else {
-        if(filter) {
-            elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`
+    for (let page of pages) {
+        if (String(pages).includes("...")) {
+            elements += `<span>${page}</span>`
         } else {
-            elements += `<a href="?page=${page}">${page}</a>`
+            if (filter) {
+                elements += `<a href="?page=${page}&filter=${filter}">${page}</a>`
+            } else {
+                elements += `<a href="?page=${page}">${page}</a>`
+            }
         }
     }
+    number.innerHTML = elements
 }
 
-number.innerHTML = elements
+const pagination = document.querySelector(".pagination")
+const number = document.querySelector(".pagination .number")
+
+if (pagination) {
+    createPagination(pagination, number)
+}

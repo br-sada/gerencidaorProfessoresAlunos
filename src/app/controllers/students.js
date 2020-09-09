@@ -3,17 +3,38 @@ const { age, graduation, birth } = require('../../lib/utils')
 const Student = require('../models/Student')
 
 exports.index = function (req, res) {
-    const { filter } = req.query
+    let { filter, page, limit } = req.query
 
-    if(!filter){
-        Student.all(function(students) {
-            return res.render('students/index', { students })
-        })
-    } else {
-        Student.findby(filter, function(students) {
-            return res.render('students/index', { students })
-        })
+    page = page || 1
+    limit = limit || 2
+    let offset = limit * (page - 1)
+
+    const params = {
+        filter,
+        page,
+        limit,
+        offset,
     }
+
+    Student.paginate(params, function(students) {
+
+        const pagination = {
+            total: Math.ceil( students[0].total / limit ),
+            page
+        }
+
+        return res.render('students/index', { students, pagination, filter })
+    })
+
+    // if(!filter){
+    //     Student.all(function(students) {
+    //         return res.render('students/index', { students })
+    //     })
+    // } else {
+    //     Student.findby(filter, function(students) {
+    //         return res.render('students/index', { students })
+    //     })
+    // }
 }
 
 //create
